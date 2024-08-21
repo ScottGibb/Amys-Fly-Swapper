@@ -29,7 +29,7 @@ num_flys = (num_columns-1)/2
 logging.info(f"There are {num_columns} in this spreadsheet, this means there are {num_flys} flys in this sheet")
 
 # Check the formatting of the swap sheet
-CONST_NUM_SWAP_COLUMNS = 3
+CONST_NUM_SWAP_COLUMNS = 4
 # Check how many flys there are
 num_swap_columns = swap_sheet.columns.size
 if num_swap_columns is not CONST_NUM_SWAP_COLUMNS:
@@ -46,19 +46,22 @@ logging.info(f"I Detected {len(swap_sheet)} swaps! Time to get swapping!!")
 for index, row in swap_sheet.iterrows():
     fly_A = row['flyA']
     fly_B = row['flyB']
-    frame = row['Frame']
-    logging.info(f"Fly {fly_A} will be swapped with {fly_B} on frame {frame}")
-    # Temp Store the fly A
-    temp_fly_pos_x =core_sheet.at[frame,f"x{fly_A}"]
-    temp_fly_pos_y =core_sheet.at[frame,f"y{fly_A}"]
-    logging.debug(f"Temporarily Storing Fly {fly_A} which was at [{temp_fly_pos_x},{temp_fly_pos_y}] at Frame {frame}")
-    # Swap fly A with B
-    core_sheet.at[frame,f"x{fly_A}"]=core_sheet.at[frame,f"x{fly_B}"]
-    core_sheet.at[frame,f"y{fly_A}"]=core_sheet.at[frame,f"y{fly_B}"]
-    # Swap Fly B with the Temp
-    core_sheet.at[frame,f"x{fly_B}"]=temp_fly_pos_x
-    core_sheet.at[frame,f"y{fly_B}"]=temp_fly_pos_y
-    logging.debug(f"Fly {fly_A} has now been swapped with fly {fly_B} at Frame {frame}")
+    frame_start = row['FrameStart']
+    frame_end = row['FrameEnd']
+
+    logging.info(f"Fly {fly_A} will be swapped with fly {fly_B} at frame {frame_start} to frame {frame_end}")
+    for frame in range(frame_start, frame_end+1):
+        # Temp Store the fly A
+        temp_fly_pos_x =core_sheet.at[frame,f"x{fly_A}"]
+        temp_fly_pos_y =core_sheet.at[frame,f"y{fly_A}"]
+        logging.debug(f"Temporarily Storing Fly {fly_A} which was at [{temp_fly_pos_x},{temp_fly_pos_y}] at Frame {frame}")
+        # Swap fly A with B
+        core_sheet.at[frame,f"x{fly_A}"]=core_sheet.at[frame,f"x{fly_B}"]
+        core_sheet.at[frame,f"y{fly_A}"]=core_sheet.at[frame,f"y{fly_B}"]
+        # Swap Fly B with the Temp
+        core_sheet.at[frame,f"x{fly_B}"]=temp_fly_pos_x
+        core_sheet.at[frame,f"y{fly_B}"]=temp_fly_pos_y
+        logging.debug(f"Fly {fly_A} has now been swapped with fly {fly_B} at Frame {frame}")
 
 
 logging.info("Right about now I would start thinking about thanking scott....")
