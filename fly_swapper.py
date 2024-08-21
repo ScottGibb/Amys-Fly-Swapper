@@ -38,6 +38,7 @@ if num_swap_columns is not CONST_NUM_SWAP_COLUMNS:
     sys.exit(-2)
 else:
     logging.info(f"It looks like the {swap_sheet_name} part of {file_name} is correctly formatted!")
+#TODO: Check the format of the cells (do they have the right headers)
 
 logging.info("Brace yourself—it's about to get bumpier than a night out with too much tequila")
 logging.info(f"I Detected {len(swap_sheet)} swaps! Time to get swapping!!")
