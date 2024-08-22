@@ -52,7 +52,7 @@ In this table you will put in the flies that need to be swapped and at what fram
 
 So in the example above fly 1 is swapped with Fly 6 at and including frame 1 till frame 2 (inclusive). the same can be said with fly 3 and 2 from frames 1 to 10 (inclusive)
 
-### Do some Python Code Changes
+### Tell the program where your excel sheet is
 
 ### GUI Way
 
