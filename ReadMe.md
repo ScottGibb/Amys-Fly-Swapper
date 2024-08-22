@@ -1,7 +1,6 @@
 # Amys Fly Swapper Algorithm
 
-[![Python application](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/python-app.yml/badge.svg)](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/python-app.yml)
-
+[![Static Code Analysis](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/Static-Analysis.yml/badge.svg)](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/Static-Analysis.yml)
 ![Langauges and Tools](./docs/Languages%20and%20Tools.png)
 
 ## Summary
