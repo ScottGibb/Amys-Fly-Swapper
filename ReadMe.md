@@ -1,6 +1,7 @@
 # Amys Fly Swapper Algorithm
 
 [![Static Code Analysis](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/Static-Analysis.yml/badge.svg)](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/Static-Analysis.yml)
+
 ![Langauges and Tools](./docs/Languages%20and%20Tools.png)
 
 ## Summary
