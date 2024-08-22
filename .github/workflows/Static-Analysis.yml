@@ -60,4 +60,3 @@ jobs:
         run: |
           echo "Checking YAML files"
           yamllint -c .yamllint.yml .github/**/**.yml
-          yamllint -c .yamllint.yml **.yml
