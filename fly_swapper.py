@@ -91,7 +91,7 @@ logging.info("Right about now I would start thinking about thanking scott....")
 
 directory, filename = os.path.split(file_name)
 basename, ext = os.path.splitext(filename)
-swapped_file_name = f"{basename}{"_scott_processed"}{ext}"
+swapped_file_name = f"{basename}_scott_processed{ext}"
 swapped_file_name = os.path.join(directory, swapped_file_name)
 
 core_sheet.to_excel(swapped_file_name,

@@ -83,4 +83,3 @@ INFO:root:Right about now I would start thinking about thanking scott....
 
 - [Absolute vs Relative Paths](https://www.computerhope.com/issues/ch001708.htm)
 - [idtracker.ai](https://idtracker.ai/latest/)
-
