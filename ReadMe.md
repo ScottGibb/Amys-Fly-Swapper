@@ -1,35 +1,87 @@
 # Amys Fly Swapper Algorithm
 
+[![Python application](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/python-app.yml/badge.svg)](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/python-app.yml)
+
+![Langauges and Tools](./docs/Languages%20and%20Tools.png)
+
 ## Summary
+
+This repo contains a simple [script](./fly_swapper.py) that will edit a fly excel sheet and allow the user to swap the fly trajectories given a range. This is due to the software sometime mixing the trajectories and thus human intervention is required.
 
 ## How to use
 
-### Setting up your .venv
+ To use this repo you first need to download it and setup your virtual environment. This can be done in various ways. But a windows way is shown below through [vscode](https://code.visualstudio.com/download)
 
-Setting up your virtual environment is required to get the script up and running due to it requiring the dependencies outlined
-in [requirements.txt](./requirements.txt)
+ I would recommend following this video [virtual environment in vscode tutorial](https://www.youtube.com/watch?v=O0bYaxUINnE)
 
 ### Installing dependencies
+
+Now that your vscode(or other) virtual environment is installed, simply open the terminal(make sure your .venv is selected). You can tell by your terminal looking
+similar to this:
+
+![Virtual Environment](./docs/virtual%20environment%20example.png)
+
+Fear not if it doesnt! Provided you have your virtual environment created you can do the following:
+
+```bash
+PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> .\.venv\Scripts\activate # This line here will activate your venv
+(.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper>
+```
+
+Setting up your virtual environment is required to get the script up and running due to it requiring the dependencies outlined
+in [requirements.txt](./requirements.txt). Note this command will only work if you have your virtual environment setup correctly.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## What you need to do
+Okay so hopefully thats you now configured this repo...
 
-In your spreadsheet you want to swap, you must add an extra sheet called swap, once added make the following table:
+On to the FUN part!!
 
-![alt text](./docs/image.png)
+## What you need to do to make it actually do something
 
-In this table you will put in the flies that need to be swapped and at what frame they are swapping. Then you need to go into
+### Fill in your sheets
+
+In the spreadsheet that contains your flies, you must add an extra sheet called swap. This is so that the program knows what flies to swap and when.
+For it to work correctly you must form this table here, an example is shown below as well as in the example folder [here](./example/trajectories%20(version%201).xlsb.xlsx)
+
+![Swap Sheet Example](./docs/swap_sheet_example.png)
+
+In this table you will put in the flies that need to be swapped and at what frames they are swapping in and out. Both FrameStart and FrameEnd are inclusive.
+
+So in the example above fly 1 is swapped with Fly 6 at and including frame 1 till frame 2 (inclusive). the same can be said with fly 3 and 2 from frames 1 to 10 (inclusive)
+
+### Do some Python Code Changes
+
+You need to open the following [fly_swapper.py](./fly_swapper.py) and modify the following line:
+
 ```fly_swapper.py``` and change the following:
 
 ```python
 file_name = r".\example\trajectories (version 1).xlsb.xlsx"  # path to file + file name
 ```
 
-Change this to the "Absolute" path of the file as this will give best results/ may be easier to use
+Change this to the "Absolute" path of the file as this will cause fewer issues with python path problems.
+
+After youve done that run the script however you want, below is an example of running from the terminal:
+
+```powershell
+PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> .\.venv\Scripts\activate
+(.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> python .\fly_swapper.py
+INFO:root:Good job, the path .\example\trajectories (version 1).xlsb.xlsx exists!!
+INFO:root:There are 15 in this spreadsheet, this means there are 7.0 flys in this sheet
+INFO:root:It looks like the swap part of .\example\trajectories (version 1).xlsb.xlsx is correctly formatted!
+INFO:root:Brace yourself—it's about to get bumpier than a night out with too much tequila
+INFO:root:I Detected 2 swaps! Time to get swapping!!
+INFO:root:Fly 1 will be swapped with fly 6 at frame 1 to frame 2
+INFO:root:Fly 3 will be swapped with fly 2 at frame 1 to frame 10
+INFO:root:Right about now I would start thinking about thanking scott....
+(.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper>
+```
 
 ## Useful Links
 
 - [Absolute vs Relative Paths](https://www.computerhope.com/issues/ch001708.htm)
+- [idtracker.ai](https://idtracker.ai/latest/)
+
