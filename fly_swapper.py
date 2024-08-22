@@ -2,20 +2,69 @@ import logging
 import os
 import sys
 import pandas as pd
+import argparse
+from tkinter import Label, Tk, filedialog
+from PIL import Image, ImageTk
+import random
+
 
 logging.basicConfig(level=logging.INFO)
 
-#  File Name
-file_name = (
-    r".\example\trajectories (version 1).xlsb.xlsx"  # path to file + file name
-)
+
+def get_file_path_from_gui() -> str:
+    """
+    Opens a file explorer to select the flies Excel file
+    Returns:
+        str: The file path selected by the user
+    """
+    root = Tk()
+    root.withdraw()  # Hide the root window
+    file_path = filedialog.askopenfilename(
+        title="Select the flies Excel file",
+        filetypes=[("Excel files", "*.xlsb *.xlsx *.xls")]
+    )
+    return file_path
+
+
+def display_image(image_path: str) -> None:
+    """
+    Displays an image in a GUI window
+    Args:
+        image_path (str): The location of the image to display
+    """
+    root = Tk()
+    root.title("Scott cares about you...")
+
+    img = Image.open(image_path)
+    img = ImageTk.PhotoImage(img)
+
+    label = Label(root, image=img)
+    label.pack()
+    logging.info("Scott is here to help you through this tough time")
+    root.mainloop()
+    logging.info("Scott leaves you to your own devices")
+
+
+# Set up argument parsing
+parser = argparse.ArgumentParser(description="Fly Swapper Script")
+parser.add_argument('--gui', action='store_true', help="Open file explorer to select the file")
+args = parser.parse_args()
+
+# Get the file path
+if args.gui:
+    file_name = get_file_path_from_gui()
+    if not file_name:
+        logging.error("No file selected. Exiting.")
+        sys.exit(-1)
+else:
+    file_name = r".\example\trajectories (version 1).xlsb.xlsx"  # default path
 
 # Check if the file exists in the system, crash if not
 if os.path.exists(file_name):
     logging.info(f"Good job, the path {file_name} exists!!")
 else:
     logging.error(
-        "It looks like the path you gave me doesnt exist.... "
+        "It looks like the path you gave me doesn't exist.... "
         "You sure you have supplied the right path?"
     )
     logging.error("Closing Script, try again")
@@ -27,7 +76,15 @@ swap_sheet_name = "swap"
 
 # Load the sheets in
 core_sheet = pd.read_excel(file_name, sheet_name=core_sheet_name)
-swap_sheet = pd.read_excel(file_name, sheet_name=swap_sheet_name)
+try:
+    swap_sheet = pd.read_excel(file_name, sheet_name=swap_sheet_name)
+except ValueError:
+    logging.error(
+        f"Could not find the {swap_sheet_name} sheet in the file. Did someone not follow my instructions?? hmmmm."
+    )
+    logging.error("Closing Script, try again")
+    logging.error("Or am i just a bad programmer.....  possibly")
+    sys.exit(-3)
 
 # Check how many flys there are
 num_columns = core_sheet.columns.size
@@ -95,5 +152,10 @@ swapped_file_name = f"{basename}_scott_processed{ext}"
 swapped_file_name = os.path.join(directory, swapped_file_name)
 
 core_sheet.to_excel(swapped_file_name,
-                    sheet_name="Scott Proccesed Flies",
+                    sheet_name="Scott Processed Flies",
                     index=False)
+
+# 10% chance to display an image
+sadness_factor = 0.1  # Increase if more sad
+if random.random() < sadness_factor:
+    display_image(".\\docs\\Hang in there.jpg")

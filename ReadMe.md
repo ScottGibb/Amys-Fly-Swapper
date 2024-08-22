@@ -2,7 +2,7 @@
 
 [![Static Code Analysis](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/Static-Analysis.yml/badge.svg)](https://github.com/ScottGibb/Amys-Fly-Swapper/actions/workflows/Static-Analysis.yml)
 
-![Langauges and Tools](./docs/Languages%20and%20Tools.png)
+![Languages and Tools](./docs/Languages%20and%20Tools.png)
 
 ## Summary
 
@@ -53,6 +53,18 @@ In this table you will put in the flies that need to be swapped and at what fram
 So in the example above fly 1 is swapped with Fly 6 at and including frame 1 till frame 2 (inclusive). the same can be said with fly 3 and 2 from frames 1 to 10 (inclusive)
 
 ### Do some Python Code Changes
+
+### GUI Way
+
+So you've decided you've had enough coding and you just want the damn thing to work... Well your in luck... maybe. Provided you have set up the previous sections, you should be able to do this:
+
+```powershell
+(.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> python .\fly_swapper.py --gui
+```
+
+by running the script with a command flag(the bit with --gui) you are opening a file explorer window which allow you to choose the files.
+
+### Non GUI Way
 
 You need to open the following [fly_swapper.py](./fly_swapper.py) and modify the following line:
 
