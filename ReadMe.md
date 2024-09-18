@@ -10,9 +10,14 @@ This repo contains a simple [script](./fly_swapper.py) that will edit a fly exce
 
 ## How to use
 
- To use this repo you first need to download it and setup your virtual environment. This can be done in various ways. But a windows way is shown below through [vscode](https://code.visualstudio.com/download)
+### Download this Repository
 
- I would recommend following this video [virtual environment in vscode tutorial](https://www.youtube.com/watch?v=O0bYaxUINnE)
+ To use this repo you first need to download it and setup your virtual environment. This can be done in various ways. But a windows way can be done through using the popular IDE [vscode](https://code.visualstudio.com/download).
+ To do so you can follow this [tutorial](https://www.youtube.com/watch?v=ILJ4dfOL7zs).
+
+### Set up your Virtual Environment
+
+ I would recommend following this video for setting up virtual environments: [virtual environment in vscode tutorial](https://www.youtube.com/watch?v=O0bYaxUINnE)
 
 ### Installing dependencies
 
@@ -28,8 +33,7 @@ PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> .\.venv\Scripts\activ
 (.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper>
 ```
 
-Setting up your virtual environment is required to get the script up and running due to it requiring the dependencies outlined
-in [requirements.txt](./requirements.txt). Note this command will only work if you have your virtual environment setup correctly.
+Setting up your virtual environment is required to get the script up and running due to it requiring the dependencies outlined in [requirements.txt](./requirements.txt). Note this command will only work if you have your virtual environment setup correctly.
 
 ```bash
 pip install -r requirements.txt
@@ -43,7 +47,7 @@ On to the FUN part!!
 
 ### Fill in your sheets
 
-In the spreadsheet that contains your flies, you must add an extra sheet called swap. This is so that the program knows what flies to swap and when.
+In the spreadsheet that contains your flies, you must add an extra sheet called **swap**. This is so that the program knows what flies to swap and when.
 For it to work correctly you must form this table here, an example is shown below as well as in the example folder [here](./example/trajectories%20(version%201).xlsb.xlsx)
 
 ![Swap Sheet Example](./docs/swap_sheet_example.png)
@@ -76,7 +80,7 @@ file_name = r".\example\trajectories (version 1).xlsb.xlsx"  # path to file + fi
 
 Change this to the "Absolute" path of the file as this will cause fewer issues with python path problems.
 
-After youve done that run the script however you want, below is an example of running from the terminal:
+After you've done that run the script however you want, below is an example of running from the terminal:
 
 ```powershell
 PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> .\.venv\Scripts\activate
