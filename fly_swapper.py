@@ -101,7 +101,7 @@ CONST_NUM_SWAP_COLUMNS = 4
 num_swap_columns = swap_sheet.columns.size
 if num_swap_columns is not CONST_NUM_SWAP_COLUMNS:
     logging.error(
-        f"Your {swap_sheet_name} sheet has too many columns ({num_swap_columns}) it should have {CONST_NUM_SWAP_COLUMNS} "
+        f"Your {swap_sheet_name} doesn't have the right amount of columns: {num_swap_columns}. It should have {CONST_NUM_SWAP_COLUMNS} columns"
     )
     logging.error("Closing Script, try again")
     sys.exit(-2)
