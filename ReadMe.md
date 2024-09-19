@@ -86,11 +86,20 @@ INFO:root:Right about now I would start thinking about thanking scott....
 
 ## Making an Executable
 
+We can also make the code into an exectutable by using the following command:
+
 ```powershell
 pyinstaller --onefile --name="Fly Swapper 3000" --icon=".\docs\\SG Logo.ico" --add-data ".\docs\;docs" fly_swapper.py
+```
+
+In order for this to work you will need the following dependencies.
+
+```powershell
+pip install pyinstaller
 ```
 
 ## Useful Links
 
 - [Absolute vs Relative Paths](https://www.computerhope.com/issues/ch001708.htm)
 - [idtracker.ai](https://idtracker.ai/latest/)
+- [pyinstaller](https://pyinstaller.org/en/stable/)
