@@ -1,4 +1,8 @@
-name: Static Code Analysis
+---
+  # This is the workflow for Deploying the software on Windows It should create an executable file
+  # The executable file should be uploaded as an artifact
+  # The executable file should be named "Fly Swapper 3000"
+name: Deployment
 
 on:
   push:
