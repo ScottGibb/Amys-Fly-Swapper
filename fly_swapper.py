@@ -11,6 +11,7 @@ import random
 
 logging.basicConfig(level=logging.INFO)
 
+
 def display_image(title: str, image_path: str) -> None:
     """
     Displays an image in a GUI window
@@ -29,6 +30,7 @@ def display_image(title: str, image_path: str) -> None:
     logging.info("Scott is here to help you through this tough time")
     logging.info("Scott leaves you to your own devices")
 
+
 def get_random_picture_file_path() -> str:
     """
     Gets a random picture file path from the docs directory
@@ -41,6 +43,7 @@ def get_random_picture_file_path() -> str:
     file_path = os.path.join(docs_dir, random.choice(files))
     return file_path
 
+
 def get_file_path_from_gui():
     """
     Opens a file explorer to select the flies Excel file
@@ -50,7 +53,7 @@ def get_file_path_from_gui():
     global file_name
     file_name = filedialog.askopenfilename(
         title="Select the flies Excel file",
-        filetypes=[("Excel files", "*.xlsb *.xlsx *.xls")]
+        filetypes=[("Excel files", "*.xlsb *.xlsx *.xls")],
     )
     logging.info(f"Selected file: {file_name}")
 
@@ -75,7 +78,7 @@ def main_gui() -> None:
     text = Label(root, text="Enter the threshold value")
     text.pack()
     threshold_input = StringVar(value=threshold)
-    entry = Entry(root, textvariable=threshold_input, justify='center')
+    entry = Entry(root, textvariable=threshold_input, justify="center")
     entry.pack()
 
     # Submit Button
@@ -83,7 +86,14 @@ def main_gui() -> None:
     button.pack()
 
     # Happy Button
-    button = Button(root, text="Press For Happiness", command=lambda: display_image("You should probably stop pressing this button....", get_random_picture_file_path()))
+    button = Button(
+        root,
+        text="Press For Happiness",
+        command=lambda: display_image(
+            "You should probably stop pressing this button....",
+            get_random_picture_file_path(),
+        ),
+    )
     button.pack()
     root.mainloop()
 
@@ -167,11 +177,18 @@ def find_invalid_flies(core_sheet: pd.DataFrame) -> list:
             logging.debug(f"First coordinate is {first_coord} of fly {column}")
             if first_coord > threshold:
                 logging.debug(f"Fly {column} is invalid")
-                invalid_flies.append(column.strip("y")) # Remove the y from the column name
-    logging.info(f"Invalid flies are: {invalid_flies} since they are above the threshold of {threshold}")
+                invalid_flies.append(
+                    column.strip("y")
+                )  # Remove the y from the column name
+    logging.info(
+        f"Invalid flies are: {invalid_flies} since they are above the threshold of {threshold}"
+    )
     return invalid_flies
 
-def set_invalid_flies_to_nan(core_sheet: pd.DataFrame, invalid_files: list) -> pd.DataFrame:
+
+def set_invalid_flies_to_nan(
+    core_sheet: pd.DataFrame, invalid_files: list
+) -> pd.DataFrame:
     """
     Sets the invalid flies to NaN in the core sheet
     Args:
@@ -186,6 +203,7 @@ def set_invalid_flies_to_nan(core_sheet: pd.DataFrame, invalid_files: list) -> p
         core_sheet[f"y{fly}"] = core_sheet[f"y{fly}"].apply(lambda x: pd.NA)
     return core_sheet
 
+
 def process_sheet():
     """
     Process the flies based on the swap sheet provided and the threshold and saves the new file
@@ -195,7 +213,9 @@ def process_sheet():
     validate_path()
     [core_sheet, swap_sheet] = load_sheet()
     validate_sheet(core_sheet, swap_sheet)
-    logging.info("Brace yourself—it's about to get bumpier than a night out with too much tequila")
+    logging.info(
+        "Brace yourself—it's about to get bumpier than a night out with too much tequila"
+    )
     logging.info("I'm going to start processing the flies now...")
 
     try:
@@ -218,11 +238,15 @@ def process_sheet():
         frame_start = row["FrameStart"]
         frame_end = row["FrameEnd"]
 
-        logging.info(f"Fly {fly_A} will be swapped with fly {fly_B} at frame {frame_start} to frame {frame_end}")
+        logging.info(
+            f"Fly {fly_A} will be swapped with fly {fly_B} at frame {frame_start} to frame {frame_end}"
+        )
 
         # Check if the flies are invalid
         if str(fly_A) in invalid_files or str(fly_B) in invalid_files:
-            logging.error("Either Fly A or Fly B is invalid, so should not be swapped. Exiting.")
+            logging.error(
+                "Either Fly A or Fly B is invalid, so should not be swapped. Exiting."
+            )
             sys.exit(-2)
 
         for frame in range(frame_start, frame_end + 1):
@@ -249,9 +273,9 @@ def process_sheet():
     swapped_file_name = f"{basename}_scott_processed{ext}"
     swapped_file_name = os.path.join(directory, swapped_file_name)
 
-    core_sheet.to_excel(swapped_file_name,
-                        sheet_name="Scott Processed Flies",
-                        index=False)
+    core_sheet.to_excel(
+        swapped_file_name, sheet_name="Scott Processed Flies", index=False
+    )
 
     # 30% chance to display an image
     sadness_factor = 0.3  # Increase if more sad
@@ -262,7 +286,8 @@ def process_sheet():
     logging.info("Scott has left the building.... why was he even here?")
 
     # Display Success Popup
-    display_image("Much Wow, you've swapped some flies",".\\docs\\Thumbs Up.jpg")
+    display_image("Much Wow, you've swapped some flies", ".\\docs\\Thumbs Up.jpg")
+
 
 # Global Variables
 threshold_input = None
