@@ -84,6 +84,12 @@ INFO:root:Right about now I would start thinking about thanking scott....
 (.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper>
 ```
 
+## Making an Executable
+
+```powershell
+pyinstaller --onefile --name="Fly Swapper 3000" --icon=".\docs\\SG Logo.ico" --add-data ".\docs\;docs" fly_swapper.py
+```
+
 ## Useful Links
 
 - [Absolute vs Relative Paths](https://www.computerhope.com/issues/ch001708.htm)

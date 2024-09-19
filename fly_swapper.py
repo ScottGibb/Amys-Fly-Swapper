@@ -280,13 +280,13 @@ def process_sheet():
     # 30% chance to display an image
     sadness_factor = 0.3  # Increase if more sad
     if random.random() < sadness_factor:
-        display_image("Scott cares about you...", ".\\docs\\Hang in there.jpg")
+        display_image("Scott cares about you...", os.path.join(os.path.dirname(__file__),"docs\\Hang in there.jpg"))
 
     logging.info(f"Someone saved the file as {swapped_file_name}")
     logging.info("Scott has left the building.... why was he even here?")
 
     # Display Success Popup
-    display_image("Much Wow, you've swapped some flies", ".\\docs\\Thumbs Up.jpg")
+    display_image("Much Wow, you've swapped some flies", os.path.join(os.path.dirname(__file__),"docs\\Thumbs Up.jpg"))
 
 
 # Global Variables
