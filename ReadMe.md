@@ -28,14 +28,14 @@ similar to this:
 
 Fear not if it doesnt! Provided you have your virtual environment created you can do the following:
 
-```bash
+```powershell
 PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> .\.venv\Scripts\activate # This line here will activate your venv
 (.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper>
 ```
 
 Setting up your virtual environment is required to get the script up and running due to it requiring the dependencies outlined in [requirements.txt](./requirements.txt). Note this command will only work if you have your virtual environment setup correctly.
 
-```bash
+```powershell
 pip install -r requirements.txt
 ```
 
@@ -63,24 +63,12 @@ So in the example above fly 1 is swapped with Fly 6 at and including frame 1 til
 So you've decided you've had enough coding and you just want the damn thing to work... Well your in luck... maybe. Provided you have set up the previous sections, you should be able to do this:
 
 ```powershell
-(.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> python .\fly_swapper.py --gui
+(.venv) PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> python .\fly_swapper.py
 ```
 
-by running the script with a command flag(the bit with --gui) you are opening a file explorer window which allow you to choose the files.
+This should then fire up a GUI which will allow you to input the threshold and select a file to process.
 
-### Non GUI Way
-
-You need to open the following [fly_swapper.py](./fly_swapper.py) and modify the following line:
-
-```fly_swapper.py``` and change the following:
-
-```python
-file_name = r".\example\trajectories (version 1).xlsb.xlsx"  # path to file + file name
-```
-
-Change this to the "Absolute" path of the file as this will cause fewer issues with python path problems.
-
-After you've done that run the script however you want, below is an example of running from the terminal:
+You then should see something like this on the console:
 
 ```powershell
 PS C:\Users\smgib_161\Documents\Projects\Amys Fly Swapper> .\.venv\Scripts\activate
